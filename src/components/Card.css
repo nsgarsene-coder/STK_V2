@@ -118,3 +118,18 @@
   background: rgba(26, 26, 24, 0.6);
   z-index: 5;
 }
+
+/* Ajoutez ceci à votre fichier Card.css existant */
+.stk-card.state-selected {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 4px var(--stk-white), 0 20px 40px rgba(0,0,0,0.5);
+  z-index: 10;
+  animation: pulseSelect 1.5s infinite;
+}
+
+@keyframes pulseSelect {
+  0% { box-shadow: 0 0 0 4px var(--stk-white), 0 20px 40px rgba(0,0,0,0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(255,255,255,0.5), 0 20px 40px rgba(0,0,0,0.5); }
+  100% { box-shadow: 0 0 0 4px var(--stk-white), 0 20px 40px rgba(0,0,0,0.5); }
+}
+

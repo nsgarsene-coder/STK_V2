@@ -1,0 +1,64 @@
+.stk-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(26, 26, 24, 0.85); /* Fond charbon semi-transparent */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.stk-modal-container {
+  background: var(--stk-bg-light, #F4F1EA);
+  color: #1A1A18;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+  animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.stk-modal-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(26, 26, 24, 0.1);
+  padding-bottom: 10px;
+}
+
+.stk-modal-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.stk-modal-body {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.stk-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.stk-btn-primary {
+  background: #1A1A18;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.stk-btn-primary:hover {
+  transform: translateY(-2px);
+}

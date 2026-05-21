@@ -1,0 +1,49 @@
+.stk-tuto-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(26, 26, 24, 0.9);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2000;
+}
+
+.stk-tuto-container {
+  display: flex;
+  gap: 30px;
+  max-width: 800px;
+  width: 90%;
+}
+
+.stk-tuto-bubble {
+  flex: 1;
+  background: #F4F1EA;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.stk-tuto-bubble::after {
+  content: '';
+  position: absolute;
+  right: -15px; top: 50%;
+  border-left: 15px solid #F4F1EA;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.stk-tuto-visual {
+  flex: 1;
+  background: #1A1A18;
+  border: 2px dashed #4A5D60;
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  color: #F4F1EA;
+}
+
+.stk-tuto-actions {
+  margin-top: 25px;
+  display: flex; gap: 10px;
+}
+
+.stk-btn-skip { background: transparent; border: 1px solid #1A1A18; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+.stk-btn-next, .stk-btn-start { background: #3A593E; color: white; border: none; padding: 8px 20px; border-radius: 5px; cursor: pointer; }
