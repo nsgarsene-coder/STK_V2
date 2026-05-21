@@ -1,0 +1,24 @@
+.stk-game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+}
+
+.stk-board-row {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stk-board-separator {
+  width: 80%;
+  max-width: 900px;
+  height: 1px;
+  background: rgba(26, 26, 24, 0.1);
+  border-bottom: 1px dashed rgba(26, 26, 24, 0.2);
+}
