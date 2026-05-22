@@ -47,15 +47,22 @@
 
 .stk-connect-line {
   stroke: #1A1A18;
-  stroke-width: 2px;
-  stroke-dasharray: 8 4;
-  opacity: 0.6;
-  animation: dashDraw 0.4s ease forwards;
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  stroke-dasharray: 6 5;
+  opacity: 1;
+  animation: dashDraw 0.5s ease forwards;
 }
 
 @keyframes dashDraw {
-  from { stroke-dashoffset: 200; opacity: 0; }
-  to   { stroke-dashoffset: 0;   opacity: 0.6; }
+  from {
+    stroke-dashoffset: 300;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
 }
 
 /* Side panel */
@@ -170,4 +177,120 @@
   max-width: 180px;
   line-height: 1.4;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+/* ================================
+   MATCH REVEAL OVERLAY
+   ================================ */
+.stk-match-reveal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(20, 20, 18, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: revealFadeIn 0.35s ease both;
+}
+
+@keyframes revealFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.stk-match-reveal {
+  background: #F4F1EA;
+  border-radius: 16px;
+  padding: 40px 44px;
+  max-width: 520px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.35);
+  animation: revealSlideUp 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes revealSlideUp {
+  from { transform: translateY(24px) scale(0.95); opacity: 0; }
+  to   { transform: translateY(0) scale(1);       opacity: 1; }
+}
+
+.stk-match-reveal-tag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #3A593E;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+.stk-match-reveal-cards {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stk-match-mini-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: cardFlyIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.stk-match-mini-card.is-nature      { animation-delay: 0.1s; }
+.stk-match-mini-card.is-application { animation-delay: 0.2s; }
+
+@keyframes cardFlyIn {
+  from { opacity: 0; transform: scale(0.8) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)   translateY(0); }
+}
+
+.stk-match-mini-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.stk-match-mini-card.is-nature img {
+  box-shadow: 0 0 0 3px #3A593E;
+}
+
+.stk-match-mini-card.is-application img {
+  box-shadow: 0 0 0 3px #4A5D60;
+}
+
+.stk-match-mini-card span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1A1A18;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.stk-match-reveal-connector {
+  display: flex;
+  align-items: center;
+  opacity: 0.4;
+}
+
+.stk-match-reveal-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(26, 26, 24, 0.6);
+  text-align: center;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  max-width: 380px;
+  animation: textFadeIn 0.4s ease 0.4s both;
+}
+
+@keyframes textFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

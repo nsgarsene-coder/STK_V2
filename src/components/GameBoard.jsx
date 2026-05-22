@@ -20,7 +20,7 @@ const GameBoard = () => {
   const [errorCounts, setErrorCounts] = useState({});
   const [infoPopup,   setInfoPopup]   = useState(null);
   const [matchPopup,  setMatchPopup]  = useState(null);
-  const [matchLine,   setMatchLine]   = useState(null);
+  const [matchAnim, setMatchAnim] = useState(null);
 
   const boardRef        = useRef(null);
   const cardRefs        = useRef({});
@@ -54,20 +54,35 @@ const GameBoard = () => {
 
       const p1 = getCenter(`nature-${nature.pairId}`);
       const p2 = getCenter(`app-${app.pairId}`);
-      if (p1 && p2) setMatchLine({ x1: p1.x, y1: p1.y, x2: p2.x, y2: p2.y });
+      if (p1 && p2) setMatchAnim({
+  nature:   nature,
+  app:      app,
+  pairData: getPairData(nature.pairId),
+});
+setSelNature(null);
+setSelApp(null);
+setInfoPopup(null);
+
+setTimeout(() => {
+  const nextIds = [...foundPairIdsRef.current, nature.pairId];
+  foundPairIdsRef.current = nextIds;
+  updateScore(nature.pairId);
+  setBoard(setupBoard(nextIds));
+  setMatchAnim(null);
+}, 2800);
 
       setInfoPopup(null);
       setMatchPopup(getPairData(nature.pairId));
       setSelNature(null);
       setSelApp(null);
 
-      setTimeout(() => {
-        const nextIds = [...foundPairIdsRef.current, nature.pairId];
-        foundPairIdsRef.current = nextIds;
-        updateScore(nature.pairId);
-        setBoard(setupBoard(nextIds));
-        setMatchLine(null);
-      }, 2500);
+     setTimeout(() => {
+  const nextIds = [...foundPairIdsRef.current, nature.pairId];
+  foundPairIdsRef.current = nextIds;
+  updateScore(nature.pairId);
+  setBoard(setupBoard(nextIds));
+  setMatchAnim(null);
+}, 2800);
 
     } else {
       playSFX('error');
@@ -129,26 +144,13 @@ const GameBoard = () => {
     <div className="stk-game-container" ref={boardRef} style={{ position: 'relative' }}>
 
       {/* FIX : SVG dimensionné explicitement pour couvrir tout le board */}
-      {matchLine && (
-        <svg
-          className="stk-svg-line"
-          style={{
-            position: 'absolute',
-            top: 0, left: 0,
-            width: '100%', height: '100%',
-            pointerEvents: 'none',
-            zIndex: 20,
-          }}
-          aria-hidden="true"
-        >
-          <line
-            x1={matchLine.x1} y1={matchLine.y1}
-            x2={matchLine.x2} y2={matchLine.y2}
-            className="stk-connect-line"
-          />
-        </svg>
-      )}
-
+      {matchAnim && (
+  <MatchReveal
+    nature={matchAnim.nature}
+    app={matchAnim.app}
+    pairData={matchAnim.pairData}
+  />
+)}
       <div className="stk-board-row">
         {board.natureCards.map(card => (
           <div key={card.pairId} className="stk-card-wrapper">
@@ -258,4 +260,39 @@ const HintBadge = ({ text }) => (
   <div className="stk-hint-badge">💡 {text}</div>
 );
 
+
 export default GameBoard;
+const MatchReveal = ({ nature, app, pairData }) => (
+  <div className="stk-match-reveal-overlay">
+    <div className="stk-match-reveal">
+
+      <div className="stk-match-reveal-tag">✦ CONNEXION TROUVÉE</div>
+
+      <div className="stk-match-reveal-cards">
+        <div className="stk-match-mini-card is-nature">
+          <img src={nature.image} alt={nature.nom} />
+          <span>{nature.nom}</span>
+        </div>
+
+        <div className="stk-match-reveal-connector">
+          <svg width="48" height="2" viewBox="0 0 48 2">
+            <line x1="0" y1="1" x2="48" y2="1"
+              stroke="#1A1A18" strokeWidth="1.5"
+              strokeDasharray="4 3"
+            />
+          </svg>
+        </div>
+
+        <div className="stk-match-mini-card is-application">
+          <img src={app.image} alt={app.nom} />
+          <span>{app.nom}</span>
+        </div>
+      </div>
+
+      {pairData && (
+        <p className="stk-match-reveal-text">{pairData.explication}</p>
+      )}
+
+    </div>
+  </div>
+);

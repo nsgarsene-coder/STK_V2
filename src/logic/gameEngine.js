@@ -1,62 +1,69 @@
 import { pairs } from './pairs';
 
-/**
- * Mélange un tableau
- */
 const shuffle = (array) => {
-  const newArray = [...array];
-  for (let i = newArray.length - 1; i > 0; i--) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  return newArray;
+  return arr;
 };
 
 /**
- * Prépare le plateau avec un dosage de paires et d'intrus
- * @param {Array} usedPairIds - IDs déjà trouvés
- * @param {Number} guaranteedMatches - Nombre de paires complètes à garantir (ex: 2)
+ * Construit un plateau de 4 cartes nature + 4 cartes app
+ * avec exactement `guaranteedMatches` paires complètes garanties.
+ * Les fillers ne forment jamais de paire accidentelle.
  */
-export const setupBoard = (usedPairIds = [], guaranteedMatches = 2) => {
-  const availablePairs = pairs.filter(p => !usedPairIds.includes(p.id));
-  const shuffledAvailable = shuffle(availablePairs);
+export const setupBoard = (usedPairIds = [], guaranteedMatches = 1) => {
+  const available = shuffle(pairs.filter(p => !usedPairIds.includes(p.id)));
 
-  // 1. On pioche les paires qui seront COMPLÈTES (les matchs possibles)
-  const matchingPairs = shuffledAvailable.slice(0, guaranteedMatches);
-  
-  // 2. On pioche les paires qui seront ORPHELINES (les intrus)
-  // On prend les paires suivantes dans la liste mélangée
-  const orphanPairs = shuffledAvailable.slice(guaranteedMatches, 8 - guaranteedMatches);
+  if (available.length < 4) return { natureCards: [], appCards: [] };
 
-  const natureCards = [];
-  const appCards = [];
+  // 1. Paires complètes garanties
+  const matchPairs = available.slice(0, guaranteedMatches);
 
-  // Ajouter les matchs garantis
-  matchingPairs.forEach(p => {
-    natureCards.push({ ...p.nature, pairId: p.id });
-    appCards.push({ ...p.application, pairId: p.id });
+  // 2. Réservoir de fillers (hors paires garanties)
+  const fillerPool = available.slice(guaranteedMatches);
+
+  const fillerCount = 4 - guaranteedMatches;
+
+  // 3. Cartes nature garanties
+  const natureCards = matchPairs.map(p => ({ ...p.nature, pairId: p.id, type: 'nature' }));
+
+  // 4. Cartes app garanties
+  const appCards = matchPairs.map(p => ({ ...p.application, pairId: p.id, type: 'application' }));
+
+  // 5. Fillers nature — on prend dans fillerPool mélangé
+  const shuffledFillers = shuffle(fillerPool);
+  const fillerNaturePairs = shuffledFillers.slice(0, fillerCount);
+  fillerNaturePairs.forEach(p => {
+    natureCards.push({ ...p.nature, pairId: p.id, type: 'nature' });
   });
 
-  // Ajouter les intrus (on ne met qu'un côté de la paire pour chaque)
-  orphanPairs.forEach((p, index) => {
-    if (index % 2 === 0) {
-      // On met la nature mais pas l'app
-      natureCards.push({ ...p.nature, pairId: p.id });
-      // On complète l'autre ligne avec une autre paire totalement différente
-      const randomExtra = shuffledAvailable[shuffledAvailable.length - 1 - index];
-      appCards.push({ ...randomExtra.application, pairId: randomExtra.id });
-    } else {
-      // On met l'app mais pas la nature
-      appCards.push({ ...p.application, pairId: p.id });
-      const randomExtra = shuffledAvailable[shuffledAvailable.length - 1 - index];
-      natureCards.push({ ...randomExtra.nature, pairId: randomExtra.id });
+  // 6. Fillers app — on exclut les pairIds déjà présents côté nature
+  //    pour éviter toute paire accidentelle
+  const usedNatureIds = new Set(natureCards.map(c => c.pairId));
+  const eligibleAppFillers = shuffle(fillerPool).filter(p => !usedNatureIds.has(p.id));
+  const fillerAppPairs = eligibleAppFillers.slice(0, fillerCount);
+  fillerAppPairs.forEach(p => {
+    appCards.push({ ...p.application, pairId: p.id, type: 'application' });
+  });
+
+  // 7. Si on n'a pas assez de fillers app (bord de partie), on complète
+  //    avec des paires dont la nature est absente du board
+  if (appCards.length < 4) {
+    const fallback = shuffle(fillerPool).filter(p => !usedNatureIds.has(p.id));
+    for (const p of fallback) {
+      if (appCards.length >= 4) break;
+      if (!appCards.find(c => c.pairId === p.id)) {
+        appCards.push({ ...p.application, pairId: p.id, type: 'application' });
+      }
     }
-  });
+  }
 
-  // 3. On mélange chaque ligne pour que les paires ne soient pas face à face
   return {
-    natureCards: shuffle(natureCards).slice(0, 4),
-    appCards: shuffle(appCards).slice(0, 4)
+    natureCards: shuffle(natureCards),
+    appCards:    shuffle(appCards),
   };
 };
 
@@ -67,7 +74,7 @@ export const isPair = (card1, card2) => {
 
 export const getExplication = (pairId) => {
   const pair = pairs.find(p => p.id === pairId);
-  return pair ? pair.explication : "";
+  return pair ? pair.explication : '';
 };
 
 export const getHint = (pairId, level) => {
