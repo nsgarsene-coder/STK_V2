@@ -4,9 +4,68 @@ import './UserSpace.css';
 
 const UserSpace = ({ onBack }) => {
   const { score, foundPairIds } = useGameState();
-  
-  // On récupère les données des paires que l'utilisateur a déjà trouvées
   const myCollection = pairs.filter(p => foundPairIds.includes(p.id));
+
+  // Fonction de téléchargement intégrée
+  const downloadCard = (pair) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 600;
+    canvas.height = 450;
+
+    // Fond style STK
+    ctx.fillStyle = '#F4F1EA';
+    ctx.fillRect(0, 0, 600, 450);
+
+    // En-tête
+    ctx.fillStyle = '#1A1A18';
+    ctx.font = 'bold 28px Arial';
+    ctx.fillText('STK ARCHITECTURE', 50, 60);
+    ctx.font = '18px Arial';
+    ctx.fillText('FICHE D\'EXPLORATION BIOMIMÉTIQUE', 50, 90);
+
+    // Ligne de séparation
+    ctx.strokeStyle = '#4A5D60';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(50, 110);
+    ctx.lineTo(550, 110);
+    ctx.stroke();
+
+    // Contenu
+    ctx.fillStyle = '#3A593E';
+    ctx.font = 'bold 22px Arial';
+    ctx.fillText(`${pair.nature.nom} + ${pair.application.nom}`, 50, 150);
+
+    ctx.fillStyle = '#1A1A18';
+    ctx.font = '16px Arial';
+    
+    // Gestion du texte long (Explication)
+    const words = pair.explication.split(' ');
+    let line = '';
+    let y = 190;
+    words.forEach(word => {
+      if ((line + word).length > 65) {
+        ctx.fillText(line, 50, y);
+        line = word + ' ';
+        y += 25;
+      } else {
+        line += word + ' ';
+      }
+    });
+    ctx.fillText(line, 50, y);
+
+    // Pied de page
+    ctx.fillStyle = '#4A5D60';
+    ctx.font = 'italic 14px Arial';
+    ctx.fillText('Document généré par l\'explorateur STK', 50, 410);
+
+    // Action de téléchargement
+    const link = document.createElement('a');
+    link.download = `STK_Fiche_${pair.id}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  };
 
   return (
     <div className="stk-user-space">
@@ -15,7 +74,6 @@ const UserSpace = ({ onBack }) => {
         <h1>MON ESPACE EXPLORATEUR</h1>
       </header>
 
-      {/* Résumé de la progression */}
       <section className="user-stats-banner">
         <div className="stat-card">
           <span className="stat-label">Paires Découvertes</span>
@@ -26,7 +84,6 @@ const UserSpace = ({ onBack }) => {
         </div>
       </section>
 
-      {/* Grille de collection */}
       <section className="collection-section">
         <h2>Ma Collection Biomimétique</h2>
         <div className="collection-grid">
@@ -34,33 +91,33 @@ const UserSpace = ({ onBack }) => {
             myCollection.map(pair => (
               <div key={pair.id} className="collection-item">
                 <div className="item-images">
-                  <img src={pair.nature.image} alt="Nature" className="img-nature" />
+                  <img src={pair.nature.image} alt="Nature" />
                   <div className="item-link-icon">🔗</div>
-                  <img src={pair.application.image} alt="App" className="img-app" />
+                  <img src={pair.application.image} alt="App" />
                 </div>
                 <div className="item-info">
                   <h4>{pair.nature.nom} + {pair.application.nom}</h4>
-                  <button className="btn-download">Télécharger la fiche</button>
+                  <button className="btn-download" onClick={() => downloadCard(pair)}>
+                    Télécharger la fiche
+                  </button>
                 </div>
               </div>
             ))
           ) : (
             <div className="empty-collection">
-              <p>Votre collection est vide. Trouvez des paires dans le jeu pour les débloquer ici !</p>
+              <p>Trouvez des paires pour enrichir votre collection !</p>
             </div>
           )}
         </div>
       </section>
 
-      {/* Espace Communautaire / Propositions */}
       <section className="contribution-section">
         <div className="contribution-card">
           <h3>Contribuer à STK</h3>
-          <p>Vous avez une idée de liaison biomimétique ? Proposez-la à nos architectes.</p>
           <form className="stk-form" onSubmit={(e) => e.preventDefault()}>
             <div className="form-group">
-              <input type="text" placeholder="Inspiration Nature (ex: Peau de requin)" />
-              <input type="text" placeholder="Application Humaine (ex: Coque de bateau)" />
+              <input type="text" placeholder="Inspiration Nature" />
+              <input type="text" placeholder="Application Humaine" />
             </div>
             <textarea placeholder="Décrivez votre idée..."></textarea>
             <button className="stk-btn-primary">Envoyer ma proposition</button>

@@ -15,12 +15,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Martin-pêcheur",
-      image: "/images/nature/martin-pecheur.jpg",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn6i50yH7tq2l_Z26FVSuAL5CAn5llk8r8cBs31l8smWipCVYioE3LKHjp8ZsFBPXvLsbeHbjaERF8qeW7ZNF-esmeEH-1mqTdDYSZPg&s=10",
       type: "nature"
     },
     application: {
       nom: "Nez du Shinkansen",
-      image: "/images/application/tgv.jpg",
+      image: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTJN5E887DD5DNx57YRU-ic_5eIIju8Uma1PPCcFgjp9d6pa6K1",
       type: "application"
     }
   },
@@ -34,12 +34,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Gekko",
-      image: "/images/nature/gekko.jpg",
+      image: "https://t3.ftcdn.net/jpg/05/29/63/64/360_F_529636493_1u5DSzemn5hhNktwyDPIjNwFoLUsJOta.jpg",
       type: "nature"
     },
     application: {
-      nom: "Adhésif Geckskin",
-      image: "/images/application/adhesif.jpg",
+      nom: "",
+      image: "https://m.media-amazon.com/images/I/71VgrSz8LWL._AC_SL1500_.jpg",
       type: "application"
     }
   },
@@ -53,12 +53,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Termitière",
-      image: "/images/nature/termitiere.jpg",
+      image: "https://ask-nature.sfo3.digitaloceanspaces.com/wp-content/uploads/2018/06/31120521/termite-hill-Herbert-Bieser-toned-2160x1440.jpg",
       type: "nature"
     },
     application: {
       nom: "Eastgate Building",
-      image: "/images/application/eastgate-building.jpg",
+      image: "https://www.ladn.eu/wp-content/uploads/2018/07/eastgate.jpg",
       type: "application"
     }
   },
@@ -72,12 +72,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Moustique",
-      image: "/images/nature/moustique.jpg",
+      image: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/0EB4/production/_114046730_gettyimages-971015498.jpg.webp",
       type: "nature"
     },
     application: {
       nom: "Aiguille indolore",
-      image: "/images/application/aiguille.jpg",
+      image: "https://baleinesousgravillon.com/wp-content/uploads/2023/08/seringue-1.jpg",
       type: "application"
     }
   },
@@ -91,12 +91,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Bardane",
-      image: "/images/nature/bardane.jpg",
+      image: "https://ecobalade.fr/sites/default/files/PHOTO_taxon/3704271620_f784fd87ab_o_matt_lavin.jpg",
       type: "nature"
     },
     application: {
       nom: "Velcro (Scratch)",
-      image: "/images/application/velcro.jpg",
+      image: "https://www.rascol.com/3240/velcroR-brand-a-coudre-blanc-20-mm-de-large-au-metre.jpg",
       type: "application"
     }
   },
@@ -110,12 +110,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Nautile",
-      image: "/images/nature/nautile.jpg",
+      image: "https://blogs.futura-sciences.com/lehning/wp-content/uploads/sites/13/2019/03/SpiraleLogarithmique4.jpg",
       type: "nature"
     },
     application: {
       nom: "Turboréacteur",
-      image: "/images/application/turboreacteur.jpg",
+      image: "https://cdn.aerocontact.com/public/img/aviaexpo/produits/images/536/detail_ct7-2.jpg",
       type: "application"
     }
   },
@@ -129,12 +129,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Baleine à bosses",
-      image: "/images/nature/baleine.jpg",
+      image: "https://www.mediathequedelamer.com/wp-content/uploads/2025/01/Baleine-a-bosse-%C2%A9-Roberto-Rinaldi-1-scaled.jpg",
       type: "nature"
     },
     application: {
       nom: "Éolienne",
-      image: "/images/application/eolienne.jpg",
+      image: "https://www.actu-environnement.com/images/illustrations/news/6105_une.jpg",
       type: "application"
     }
   },
@@ -148,12 +148,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Luciole",
-      image: "/images/nature/luciole.jpg",
+      image: "https://junior.universalis.fr/typo3temp/assets/_processed_/3/e/csm_93304_0a112f016e.webp",
       type: "nature"
     },
     application: {
       nom: "Lampe LED",
-      image: "/images/application/led.jpg",
+      image: "https://cdn.idealo.com/folder/Product/202657/4/202657405/s4_produktbild_gross_2/philips-gu5-3-led-spot-value-mr16-12v-5-8w-like-35w-4000k-neutral-white-60-dimmable.jpg",
       type: "application"
     }
   },
@@ -167,12 +167,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Papillon Greta oto",
-      image: "/images/nature/papillon-greta.jpg",
+      image: "https://upload.wikimedia.org/wikipedia/commons/7/71/Greta_oto_(Glasswing_sp.)_captive_-_Flickr_-_S._Rae_(1).jpg",
       type: "nature"
     },
     application: {
       nom: "Verre anti-reflet",
-      image: "/images/application/verres-anti-reflet.jpg",
+      image: "https://m.media-amazon.com/images/I/51iVS14PvzL._AC_UF1000,1000_QL80_.jpg",
       type: "application"
     }
   },
@@ -186,12 +186,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Peau du requin",
-      image: "/images/nature/requin.jpg",
+      image: "https://images.rtl.fr/~c/2000v2000/rtl/www/1216934-un-requin-illustration.jpg",
       type: "nature"
     },
     application: {
       nom: "Combinaison de natation",
-      image: "/images/application/combinaison.jpg",
+      image: "https://static1.terrafemina.com/articles/8/28/03/98/@/314823-laure-manaudou-victorieuse-du-400-m-580x0-1.jpg",
       type: "application"
     }
   },
@@ -205,12 +205,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Papillon Morpho",
-      image: "/images/nature/papillon-morpho.jpg",
+      image: "https://cdn8.futura-sciences.com/a1920/video/videov6/3237.jpg",
       type: "nature"
     },
     application: {
       nom: "Panneau solaire",
-      image: "/images/application/panneau-solaire.jpg",
+      image: "https://www.rothelec-solaire.fr/sites/www.rothelec-solaire.fr/files/styles/banniere/public/images/capture-decran-2023-03-06-a-17-compressed.jpg.webp?itok=4vUIYHpr",
       type: "application"
     }
   },
@@ -224,12 +224,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Cicatrisation",
-      image: "/images/nature/cicatrice.jpg",
+      image: "https://med.stanford.edu/news/all-news/2021/04/drug-enables-healing-without-scarring/_jcr_content/_cq_featuredimage.coreimg.80.1280.jpeg/1736929387790/skin-scar-shoulder.jpeg",
       type: "nature"
     },
     application: {
       nom: "Béton cicatrisant",
-      image: "/images/application/beton-cicatrisant.jpg",
+      image: "https://www.etsmtl.ca/uploads/SAP-4FR.jpeg",
       type: "application"
     }
   },
@@ -243,12 +243,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Coléoptère de Namibie",
-      image: "/images/nature/coleoptere.jpg",
+      image: "https://ask-nature.sfo3.digitaloceanspaces.com/wp-content/uploads/2016/04/31143512/Onymacris_unguicularis-2160x1418.jpg",
       type: "nature"
     },
     application: {
       nom: "Filet capteur de rosée",
-      image: "/images/application/filet-rosee.jpg",
+      image: "https://web.dpp-websync.webcms.prd.web1.wipo.int/dpp-files/54025/54025.jpg",
       type: "application"
     }
   },
@@ -262,12 +262,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Corail",
-      image: "/images/nature/corail.jpg",
+      image: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Coral_Outcrop_Flynn_Reef.jpg",
       type: "nature"
     },
     application: {
       nom: "Ciment neutre en carbone",
-      image: "/images/application/ciment-carbone.jpg",
+      image: "https://assets.production.denios.io/article/180119_20250930-093419.jpg",
       type: "application"
     }
   },
@@ -281,12 +281,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Corbeille de Vénus",
-      image: "/images/nature/corbeille-venus.jpg",
+      image: "https://medias.pourlascience.fr/api/v1/images/view/68f798d6573c5144c905de13/wide_420-webp/image.jpg",
       type: "nature"
     },
     application: {
       nom: "Tour The Gherkin",
-      image: "/images/application/gherkin.jpg",
+      image: "https://pbs.twimg.com/media/BwT2pD-IEAABnRj.jpg",
       type: "application"
     }
   },
@@ -300,12 +300,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Feuille de Lotus",
-      image: "/images/nature/lotus.jpg",
+      image: "https://images.pexels.com/photos/539694/pexels-photo-539694.jpeg",
       type: "nature"
     },
     application: {
       nom: "Surface hydrophobe",
-      image: "/images/application/surface-hydrophobe.jpg",
+      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Effet_lotus-fr.svg/250px-Effet_lotus-fr.svg.png",
       type: "application"
     }
   },
@@ -319,12 +319,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Manchot",
-      image: "/images/nature/manchot.jpg",
+      image: "https://media.venturatravel.org/unsafe/800x600/smart/filters:quality(75):format(webp)/header_media/6acc180a-f1b5-4596-ab62-aaac82624664-emperor-penguin-oceanwide-.jpeg",
       type: "nature"
     },
     application: {
       nom: "District 11",
-      image: "/images/application/district11.jpg",
+      image: "https://www.radiofrance.fr/pikapi/images/b1c9a996-bd71-4582-bd3d-87f438f7c486/1200x680",
       type: "application"
     }
   },
@@ -338,12 +338,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Moule",
-      image: "/images/nature/moule.jpg",
+      image: "https://media.ouest-france.fr/v1/pictures/MjAxNTExZDhiOTg1ODk4NDRlZTcwMzk5YTg4ODhiMTRhMzdmMGI?width=1260&height=708&focuspoint=50,25&cropresize=1&client_id=bpeditorial&sign=2cfffec56764a1fc4e0884a52e7ed6090783da569bdef5c662ec41eb48844e03",
       type: "nature"
     },
     application: {
       nom: "Colle forte bio-inspirée",
-      image: "/images/application/colle-forte.jpg",
+      image: "https://media.nauticamilanonline.com/product/cola-de-neopreno-cressi-800x800.jpeg?width=1200",
       type: "application"
     }
   },
@@ -357,12 +357,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Zèbre",
-      image: "/images/nature/zebre.jpg",
+      image: "https://cdn.slate.fr/uploads/store/drupal_slate/photo-1526095179574-86e545346ae6.jpeg",
       type: "nature"
     },
     application: {
       nom: "Camouflage thermique",
-      image: "/images/application/camouflage.jpg",
+      image: "https://www.eurisles.org/wp-content/uploads/2020/05/2u857lq159831-1024x687.jpg",
       type: "application"
     }
   },
@@ -376,12 +376,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Os humain (Fémur)",
-      image: "/images/nature/os-humain.jpg",
+      image: "https://www.iml.care/public/img/medium/3c84a21a66116773osteoporoseosjpg_602a59b376cdd.jpg",
       type: "nature"
     },
     application: {
       nom: "Tour Eiffel",
-      image: "/images/application/tour-eiffel.jpg",
+      image: "https://thumbs.dreamstime.com/b/plan-rapproch%C3%A9-de-tour-eiffel-92301627.jpg",
       type: "application"
     }
   },
@@ -395,12 +395,12 @@ export const pairs = [
     ],
     nature: {
       nom: "Orchidée",
-      image: "/images/nature/orchidee.jpg",
+      image: "https://i-dj.unimedias.fr/2023/09/12/djachampignon-girolleas-65001d098bf3b.jpg?auto=format,compress&crop=faces&cs=tinysrgb&fit=crop&h=450&ixlib=php-4.1.0&w=800",
       type: "nature"
     },
     application: {
       nom: "Garden by the bay",
-      image: "/images/application/garden-bay.jpg",
+      image: "https://www.blumer-lehmann.com/.imaging/mte/default-theme/resize-width-1482/dam/Holzbau/Bilder/Referenzen/maggies-centre-leeds/Maggies-Leeds-Haupt-Holzbau-Engineering-Blumer-Lehmann.jpg.jpg/jcr:content/begruenter-holzbau-maggies-centre-in-der-daemmerung-holzbau-engineering-blumer-lehmann.jpg",
       type: "application"
     }
   }
