@@ -3,7 +3,7 @@ import GameBoard from './components/GameBoard';
 import UserSpace from './components/UserSpace';
 import Tutorial from './components/Tutorial';
 import Modal from './components/Modal';
-import LoadingScreen from './components/Loadingscreen';
+import Loadingscreen from './components/Loadingscreen';
 import { useGameState } from './state/gameState';
 import './App.css';
 
@@ -62,7 +62,7 @@ function App() {
     return () => clearTimeout(t);
   }, []);
 
-  if (loading) return <LoadingScreen />;
+  if (loading) return <Loadingscreen />;
 
   const progressPct = (score / 21) * 100;
 
