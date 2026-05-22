@@ -1,6 +1,6 @@
-import './LoadingScreen.css';
+import './Loadingscreen.css';
 
-const LoadingScreen = () => (
+const Loadingscreen = () => (
   <div className="ls-root">
     <img
       src="/src/assets/LOADING.svg"
@@ -13,4 +13,4 @@ const LoadingScreen = () => (
   </div>
 );
 
-export default LoadingScreen;
+export default Loadingscreen;
